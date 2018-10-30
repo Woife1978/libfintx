@@ -46,7 +46,7 @@ namespace libfintx
 
         static ConnectionDetails _conn = null;
 
-        public  ConnectionDetails GetConnectionDetails()
+        public static ConnectionDetails GetConnectionDetails()
         {
             // Damit keine Zugangsdaten direkt im Code hinterlegt sind, kann optional eine Datei verwendet werden.
             // Datei liegt in C:/Users/%username%/libfintx_test_connection.csv

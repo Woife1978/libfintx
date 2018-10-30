@@ -5,6 +5,9 @@ using System.Text;
 
 namespace libfintx.Data
 {
+
+	[Serializable]
+
     public class ConnectionDetails
     {
         /// <summary>
