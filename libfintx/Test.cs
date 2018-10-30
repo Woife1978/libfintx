@@ -46,10 +46,10 @@ namespace libfintx
 
         static ConnectionDetails _conn = null;
 
-        static Test()
+        public  ConnectionDetails GetConnectionDetails()
         {
             // Damit keine Zugangsdaten direkt im Code hinterlegt sind, kann optional eine Datei verwendet werden.
-            // Datei liegt in C:/Users/<username>/libfintx_test_connection.csv
+            // Datei liegt in C:/Users/%username%/libfintx_test_connection.csv
 
             var userDir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             var connFile = Path.Combine(userDir, "libfintx_test_connnection.csv");
@@ -59,14 +59,14 @@ namespace libfintx
                 if (lines.Length != 2)
                 {
                     Console.WriteLine($"File {connFile} exists but has wrong format.");
-                    return;
+                    return null;
                 }
 
                 var values = lines[1].Split(';');
                 if (values.Length != 8)
                 {
                     Console.WriteLine($"File {connFile} exists but has wrong format.");
-                    return;
+                    return null;
                 }
                 var account = values[0];
                 var blz = Convert.ToInt32(values[1]);
@@ -88,7 +88,10 @@ namespace libfintx
                     UserId = userId,
                     Pin = pin
                 };
+	            return _conn;
             }
+
+	        return null;
         }
 
         public static void Test_Balance()
